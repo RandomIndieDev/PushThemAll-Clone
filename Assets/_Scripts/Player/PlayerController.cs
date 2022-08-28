@@ -18,9 +18,11 @@ public class PlayerController : MonoBehaviour
 
     [Header("Settings")] 
     public float moveSpeed;
+    public float fallMultiplier;
 
 
     private bool allowHit;
+    private bool playerIsDead;
 
     private Vector3 originalPos;
 
@@ -44,7 +46,11 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        MovePlayer();
+        
+        FallFaster();
+        
+        if (!playerIsDead)
+            MovePlayer();
     }
 
     private void MovePlayer()
@@ -65,4 +71,15 @@ public class PlayerController : MonoBehaviour
             player.transform.forward = direction;
         }
     }
+    
+    private void FallFaster()
+    {
+        if (rigidbody.velocity.y <= 0)
+        {
+            rigidbody.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.fixedDeltaTime;
+        }
+    }
+        
+    
+    
 }

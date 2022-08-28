@@ -10,8 +10,6 @@ public class Enemy : MonoBehaviour
     public Rigidbody rigidbody;
     public GameObject model;
 
-    public Collider fallenCollider;
-    
     [Header("Settings")]
     public float fallMultiplier;
 
@@ -21,16 +19,23 @@ public class Enemy : MonoBehaviour
 
     public bool hasGottenUp = true;
 
+    private bool isDisabled;
+
+    private EnemyManager enemyManager;
+
     private void Update()
     {
+        if (isDisabled) return;
+        
         RotateTowardsPlayer();
     }
 
     private void FixedUpdate()
     {
-        MoveTowardsPlayer();
-        
         FallFaster();
+        
+        if (isDisabled) return;
+        MoveTowardsPlayer();
     }
 
     private void MoveTowardsPlayer()
@@ -63,16 +68,26 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void StopMoving()
+    public void Initialize(Transform targetTrans, EnemyManager manager)
     {
-        moveSpeed = 0;
+        target = targetTrans;
+        enemyManager = manager;
+        isDisabled = false;
     }
+
+    public void Disable()
+    {
+        enemyManager.EnemyDisabled();
+        isDisabled = true;
+    }
+    
 
     public void GotHit()
     {
         if (!hasGottenUp) return;
 
         hasGottenUp = false;
+        
         animator.SetTrigger("Fall");
     }
 

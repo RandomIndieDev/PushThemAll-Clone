@@ -6,7 +6,6 @@ using UnityEngine;
 public class EventsManager : MonoBehaviour
 {
     private static EventsManager _instance;
-
     public static EventsManager Instance { get { return _instance; } }
 
 
@@ -24,7 +23,27 @@ public class EventsManager : MonoBehaviour
     public event Action OnZoneOneCompleted;
     public event Action OnZoneTwoCompleted;
     public event Action OnZoneThreeCompleted;
-    
-    
 
+    public event Action OnSpawnTriggerEntered;
+
+
+    public void ZoneOneCompleted()
+    {
+        OnZoneOneCompleted?.Invoke();
+    }
+    
+    public void ZoneTwoCompleted()
+    {
+        OnZoneTwoCompleted?.Invoke();
+    }
+    
+    public void ZoneThreeCompleted()
+    {
+        OnZoneThreeCompleted?.Invoke();
+    }
+    
+    public void SpawnTriggerEntered()
+    {
+        OnSpawnTriggerEntered?.Invoke();
+    }
 }

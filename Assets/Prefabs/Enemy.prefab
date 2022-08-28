@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6186475353723994375}
   - component: {fileID: 1585846631}
   - component: {fileID: 1585846633}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80,7 +80,6 @@ MonoBehaviour:
   animator: {fileID: 337861401081470267}
   rigidbody: {fileID: 6186475353723994375}
   model: {fileID: 6420918517998771707}
-  fallenCollider: {fileID: 0}
   fallMultiplier: 8
   moveSpeed: 70
   target: {fileID: 0}
@@ -172,6 +171,10 @@ PrefabInstance:
     - target: {fileID: -8318441179975988448, guid: 3bf626041b0e848e8917535734a4e638, type: 3}
       propertyPath: m_BlendShapeWeights.Array.data[4]
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: -3542885339558904099, guid: 3bf626041b0e848e8917535734a4e638, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3bf626041b0e848e8917535734a4e638, type: 3}
       propertyPath: m_Name

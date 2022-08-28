@@ -16,10 +16,9 @@ public class EnemyCollisions : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-
         if (other.CompareTag("Zone"))
         {
-            enemy.StopMoving();
+            enemy.Disable();
         }
     }
     
