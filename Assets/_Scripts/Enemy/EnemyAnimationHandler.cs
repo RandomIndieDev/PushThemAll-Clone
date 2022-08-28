@@ -9,6 +9,6 @@ public class EnemyAnimationHandler : MonoBehaviour
 
     public void HasGottenUp()
     {
-        enemy.hasGottenUp = true;
+        enemy.StandingUp = true;
     }
 }

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1585846633}
   m_Layer: 11
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82,8 +82,7 @@ MonoBehaviour:
   model: {fileID: 6420918517998771707}
   fallMultiplier: 8
   moveSpeed: 70
-  target: {fileID: 0}
-  hasGottenUp: 1
+  attackRange: 15
 --- !u!114 &1585846633
 MonoBehaviour:
   m_ObjectHideFlags: 0

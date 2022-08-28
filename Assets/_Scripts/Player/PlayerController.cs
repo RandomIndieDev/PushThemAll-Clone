@@ -6,42 +6,54 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [Header("References")] 
-    public FloatingJoystick floatingJoystick;
-
-    public Rigidbody rigidbody;
-
-    public GameObject player;
-    public Animator animator;
-
-    public GameObject mainWeapon;
-    public GameObject weapon;
+    [SerializeField] private FloatingJoystick floatingJoystick;
+    [SerializeField] private Rigidbody rigidbody;
+    [SerializeField] private GameObject player;
+    [SerializeField] private Animator animator;
+    [SerializeField] private Collider playerMainCollider;
+    
+    [SerializeField] private PlayerWeapon weapon;
+    [SerializeField] private GameObject heldWeapon;
+    [SerializeField] private GameObject weaponClone;
 
     [Header("Settings")] 
-    public float moveSpeed;
-    public float fallMultiplier;
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private float fallMultiplier;
+    [SerializeField] private Ease playerWeaponHitEase;
 
 
-    private bool allowHit;
+    private bool allowWeaponHit;
     private bool playerIsDead;
+    private bool isGrounded;
 
     private Vector3 originalPos;
+    
+    
 
     void Start()
     {
-        originalPos = weapon.transform.localPosition;
+        originalPos = weaponClone.transform.localPosition;
+        allowWeaponHit = true;
+        isGrounded = true;
     }
 
 
     private void Update()
     {
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0) && allowWeaponHit)
         {
-
+            allowWeaponHit = false;
+            weapon.Activate(heldWeapon.transform);
+            
             var seq = DOTween.Sequence();
-            seq.Append(weapon.transform.DOLocalMove(weapon.transform.localPosition + new Vector3(0, 0, 3), .2f));
-            seq.Append(weapon.transform.DOLocalMove(originalPos, .2f));
-
+            seq.Append(weaponClone.transform.DOLocalMove(weaponClone.transform.localPosition + new Vector3(0, 0, 4), .2f).SetEase(playerWeaponHitEase));
+            seq.Append(weaponClone.transform.DOLocalMove(originalPos, .2f)).onComplete += AllowHit;
         }
+    }
+
+    private void AllowHit()
+    {
+        allowWeaponHit = true;
     }
 
     private void FixedUpdate()
@@ -49,7 +61,7 @@ public class PlayerController : MonoBehaviour
         
         FallFaster();
         
-        if (!playerIsDead)
+        if (isGrounded)
             MovePlayer();
     }
 
@@ -58,8 +70,6 @@ public class PlayerController : MonoBehaviour
         Vector3 direction = Vector3.forward * floatingJoystick.Vertical + Vector3.right * floatingJoystick.Horizontal;
 
         rigidbody.velocity = direction * moveSpeed * Time.fixedDeltaTime;
-        
-        
         
         var characterSpeed = Mathf.Clamp(Mathf.Abs(floatingJoystick.Vertical) + Mathf.Abs(floatingJoystick.Horizontal), 0,
             1);
@@ -79,6 +89,37 @@ public class PlayerController : MonoBehaviour
             rigidbody.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.fixedDeltaTime;
         }
     }
+    
+
+    void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Floor"))
+        {
+            isGrounded = true;
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Floor") && isGrounded)
+        {
+            isGrounded = false;
+            StartCoroutine(MakePlayerFall());
+        }
+    }
+
+    IEnumerator MakePlayerFall()
+    {
+        yield return new WaitForSeconds(.1f);
+
+        if (isGrounded) yield break;
+        rigidbody.velocity = Vector3.zero;
+        rigidbody.constraints &= ~RigidbodyConstraints.FreezePositionY;
+        playerMainCollider.enabled = false;
+        
+        EventsManager.Instance.PlayerDead();
+    }
+        
         
     
     

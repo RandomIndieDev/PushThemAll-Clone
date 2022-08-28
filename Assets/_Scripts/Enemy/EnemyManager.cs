@@ -17,11 +17,30 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private int zoneOneCircleSpawnAmt;
     [SerializeField] private float zoneOneCircleSpawnRadius;
 
-    
-    [Header("Settings")] 
-    [SerializeField] private int spawnAmount;
+    [Header("Zone Two Spawn Settings")] 
+    [SerializeField] private Transform zoneTwoSpawnLoc;
 
+    [SerializeField] private Vector2 xSpawnTwoPos;
+    [SerializeField] private Vector2 zSpawnTwoPos;
+    
+    [SerializeField] private int zoneTwoSpawnAmt;
+    
+    [Header("Zone Three Spawn Settings")] 
+    [SerializeField] private Transform zoneThreeSpawnLoc;
+
+    [SerializeField] private Vector2 xSpawnThreePos;
+    [SerializeField] private Vector2 zSpawnThreePos;
+    
+    [SerializeField] private int zoneThreeSpawnAmt;
+    
+    
+
+    
+    [Header("Settings")]
     [SerializeField] private float ySpawnPosition;
+    [SerializeField] private int spawnCollisionCheckRadius;
+    [SerializeField] private LayerMask collisionMask;
+    
 
 
     private int currentSpawnCount;
@@ -65,12 +84,6 @@ public class EnemyManager : MonoBehaviour
 
         return spawnedEnemies;
     }
-
-    private void SpawnEnemiesInASquare()
-    {
-        
-    }
-
     private void PrepEnemy(List<Enemy> spawnedEnemies)
     {
         foreach (var enemy in spawnedEnemies)
@@ -108,11 +121,40 @@ public class EnemyManager : MonoBehaviour
                 
                 break;
             case 2:
+                
+                PrepEnemy(SpawnEnemiesInZone(zoneTwoSpawnLoc.position, xSpawnTwoPos, zSpawnTwoPos));
+                
                 break;
             case 3:
+                
+                PrepEnemy(SpawnEnemiesInZone(zoneThreeSpawnLoc.position, xSpawnThreePos, zSpawnThreePos));
+                
                 break;
             
         }
+    }
+
+    private List<Enemy> SpawnEnemiesInZone(Vector3 location, Vector3 xOffset, Vector3 zOffset)
+    {
+        var spawnedEnemies = new List<Enemy>();
+        
+        for (int i = 0; i < zoneTwoSpawnAmt; i++)
+        {
+            var xPos = Random.Range(xOffset.x, xOffset.y);
+            var zPos = Random.Range(zOffset.x, zOffset.y);
+            
+            var spawnLocation = location + new Vector3(xPos, 0, zPos);
+            spawnLocation.y = ySpawnPosition;
+
+            if (Physics.CheckSphere(spawnLocation, spawnCollisionCheckRadius, collisionMask)) continue;
+            
+            var spawnedEnemy = enemyPooler.SpawnFromPool(spawnLocation, Quaternion.identity);
+            spawnedEnemies.Add(spawnedEnemy);
+
+
+        }
+        
+        return spawnedEnemies;
     }
 
     public void EnemyDisabled()

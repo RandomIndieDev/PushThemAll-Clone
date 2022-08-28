@@ -26,6 +26,8 @@ public class EventsManager : MonoBehaviour
 
     public event Action OnSpawnTriggerEntered;
 
+    public event Action OnPlayerDead;
+
 
     public void ZoneOneCompleted()
     {
@@ -45,5 +47,10 @@ public class EventsManager : MonoBehaviour
     public void SpawnTriggerEntered()
     {
         OnSpawnTriggerEntered?.Invoke();
+    }
+
+    public void PlayerDead()
+    {
+        OnPlayerDead?.Invoke();
     }
 }

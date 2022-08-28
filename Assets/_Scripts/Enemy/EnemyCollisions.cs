@@ -8,7 +8,7 @@ public class EnemyCollisions : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("PlayerWeapon"))
         {
             enemy.GotHit();
         }
@@ -21,5 +21,7 @@ public class EnemyCollisions : MonoBehaviour
             enemy.Disable();
         }
     }
+    
+    
     
 }

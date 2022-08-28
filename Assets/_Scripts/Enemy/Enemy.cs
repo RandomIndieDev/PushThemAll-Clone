@@ -11,23 +11,40 @@ public class Enemy : MonoBehaviour
     public GameObject model;
 
     [Header("Settings")]
-    public float fallMultiplier;
+    [SerializeField] private float fallMultiplier;
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private float attackRange;
 
-    public float moveSpeed;
+    
 
-    public Transform target;
-
-    public bool hasGottenUp = true;
+    private bool isStandingUp;
+    public bool StandingUp
+    {
+        get => isStandingUp;
+        set => isStandingUp = value;
+    }
 
     private bool isDisabled;
+    private bool isAttacking;
 
     private EnemyManager enemyManager;
+    private Transform target;
 
     private void Update()
     {
         if (isDisabled) return;
-        
+        CheckDistanceFromTarget();
         RotateTowardsPlayer();
+    }
+
+    private void CheckDistanceFromTarget()
+    {
+        if (isAttacking) return;
+
+        if (!(Vector3.Distance(transform.position, target.transform.position) <= attackRange)) return;
+        
+        isAttacking = true;
+        animator.SetTrigger("Walk");
     }
 
     private void FixedUpdate()
@@ -40,7 +57,8 @@ public class Enemy : MonoBehaviour
 
     private void MoveTowardsPlayer()
     {
-        if (!hasGottenUp) return;
+        if (!isStandingUp) return;
+        if (!isAttacking) return;
 
         var moveDirection = target.transform.position - transform.position;
         moveDirection = moveDirection.normalized;
@@ -50,7 +68,8 @@ public class Enemy : MonoBehaviour
 
     private void RotateTowardsPlayer()
     {
-        if (!hasGottenUp) return;
+        if (!isStandingUp) return;
+        if (!isAttacking) return;
 
         Vector3 lookVector = target.transform.position - transform.position;
         lookVector.y = model.transform.position.y;
@@ -70,6 +89,9 @@ public class Enemy : MonoBehaviour
 
     public void Initialize(Transform targetTrans, EnemyManager manager)
     {
+        isStandingUp = true;
+        isAttacking = false;
+        
         target = targetTrans;
         enemyManager = manager;
         isDisabled = false;
@@ -77,6 +99,8 @@ public class Enemy : MonoBehaviour
 
     public void Disable()
     {
+        if (isDisabled) return;
+        
         enemyManager.EnemyDisabled();
         isDisabled = true;
     }
@@ -84,15 +108,11 @@ public class Enemy : MonoBehaviour
 
     public void GotHit()
     {
-        if (!hasGottenUp) return;
+        if (!isStandingUp) return;
 
-        hasGottenUp = false;
+        isStandingUp = false;
         
         animator.SetTrigger("Fall");
     }
-
-    public void HasGottenUp()
-    {
-        hasGottenUp = true;
-    }
+    
 }

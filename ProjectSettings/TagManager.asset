@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Zone
   - SpawnTrigger
+  - PlayerWeapon
+  - Floor
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -20,8 +23,8 @@ TagManager:
   - Floor
   - Enemy
   - Zone
-  - 
-  - 
+  - EnemyBody
+  - PlayerFeet
   - 
   - 
   - 

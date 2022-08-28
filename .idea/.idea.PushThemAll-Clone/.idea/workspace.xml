@@ -11,30 +11,36 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/EnemyManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/ZoneTrigger.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Enemy/EnemyAnimationHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/EnemyPooler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Player/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/CameraController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Enemy/EnemyManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Joystick Pack/Examples/JoystickPlayerExample.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/EventsManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Enemy/EnemyCollisions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/ZoneBarrier.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Player/PlayerWeapon.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Enemy/Enemy.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Assets/_Scripts/NewBehaviourScript.cs" />
-        <option value="$PROJECT_DIR$/Assets/_Scripts/Enemy/EnemyAnimationHandler.cs" />
-        <option value="$PROJECT_DIR$/Assets/_Scripts/Enemy/EnemyCollisions.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/ZoneBarrier.cs" />
-        <option value="$PROJECT_DIR$/Assets/_Scripts/Player/PlayerController.cs" />
-        <option value="$PROJECT_DIR$/Assets/_Scripts/Enemy/Enemy.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/EnemyPooler.cs" />
-        <option value="$PROJECT_DIR$/Assets/_Scripts/EventsManager.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/ZoneTrigger.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/EnemyManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Scripts/EventsManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Scripts/Enemy/EnemyAnimationHandler.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Scripts/Enemy/Enemy.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Scripts/GameManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Scripts/CameraController.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Scripts/Enemy/EnemyManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Scripts/Enemy/EnemyCollisions.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Scripts/Player/PlayerWeapon.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Scripts/Player/PlayerController.cs" />
       </list>
     </option>
   </component>
@@ -88,6 +94,11 @@
       <workItem from="1661668304032" duration="2275000" />
       <workItem from="1661670700806" duration="1875000" />
       <workItem from="1661673279904" duration="1941000" />
+      <workItem from="1661675433061" duration="1794000" />
+      <workItem from="1661677263121" duration="1854000" />
+      <workItem from="1661679166209" duration="1990000" />
+      <workItem from="1661681199323" duration="1984000" />
+      <workItem from="1661683586071" duration="1539000" />
     </task>
     <servers />
   </component>
@@ -106,5 +117,15 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="764" y="195" key="RiderGenerateDialog" timestamp="1661677494666">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="764" y="195" key="RiderGenerateDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1661677494666" />
+    <state x="616" y="240" key="run.anything.popup" timestamp="1661683956963">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1661683956963" />
   </component>
 </project>
