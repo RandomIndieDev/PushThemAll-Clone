@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyAnimationHandler : MonoBehaviour
 {
 
-    public Enemy enemy;
+    [SerializeField] private Enemy enemy;
 
     public void HasGottenUp()
     {

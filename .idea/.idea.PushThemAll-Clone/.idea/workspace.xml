@@ -33,16 +33,16 @@
         <option value="$PROJECT_DIR$/Assets/_Scripts/EnemyPooler.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/ZoneTrigger.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/EnemyManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/_Scripts/Enemy/EnemyAnimationHandler.cs" />
-        <option value="$PROJECT_DIR$/Assets/_Scripts/Enemy/Enemy.cs" />
-        <option value="$PROJECT_DIR$/Assets/_Scripts/Enemy/EnemyCollisions.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/Player/PlayerWeapon.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/Enemy/EnemyManager.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/FinishTrigger.cs" />
-        <option value="$PROJECT_DIR$/Assets/_Scripts/EventsManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/_Scripts/CameraController.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/GameManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Scripts/Enemy/EnemyCollisions.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Scripts/Enemy/EnemyAnimationHandler.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Scripts/EventsManager.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/Player/PlayerController.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Scripts/CameraController.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Scripts/Enemy/Enemy.cs" />
       </list>
     </option>
   </component>
@@ -103,7 +103,8 @@
       <workItem from="1661683586071" duration="2171000" />
       <workItem from="1661686332471" duration="2093000" />
       <workItem from="1661688795474" duration="1935000" />
-      <workItem from="1661690770404" duration="359000" />
+      <workItem from="1661690770404" duration="1771000" />
+      <workItem from="1661692585665" duration="910000" />
     </task>
     <servers />
   </component>

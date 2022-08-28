@@ -6,14 +6,16 @@ public class Enemy : MonoBehaviour
 {
     
     
-    public Animator animator;
-    public Rigidbody rigidbody;
-    public GameObject model;
+    [SerializeField] private Animator animator;
+    [SerializeField] private Rigidbody rigidbody;
+    [SerializeField] private GameObject model;
 
     [Header("Settings")]
     [SerializeField] private float fallMultiplier;
     [SerializeField] private float moveSpeed;
     [SerializeField] private float attackRange;
+    [SerializeField] private float playerHitRange;
+    [SerializeField] private float playerHitCooldown;
 
     
 
@@ -26,9 +28,21 @@ public class Enemy : MonoBehaviour
 
     private bool isDisabled;
     private bool isAttacking;
+    private bool canHitPlayer;
 
     private EnemyManager enemyManager;
     private Transform target;
+    
+    public void Initialize(Transform targetTrans, EnemyManager manager)
+    {
+        isStandingUp = true;
+        isAttacking = false;
+        canHitPlayer = true;
+        
+        target = targetTrans;
+        enemyManager = manager;
+        isDisabled = false;
+    }
 
     private void Update()
     {
@@ -39,12 +53,29 @@ public class Enemy : MonoBehaviour
 
     private void CheckDistanceFromTarget()
     {
-        if (isAttacking) return;
 
-        if (!(Vector3.Distance(transform.position, target.transform.position) <= attackRange)) return;
+        var distanceFromPlayer = Vector3.Distance(transform.position, target.transform.position);
+
+        if ((distanceFromPlayer <= attackRange) && !isAttacking)
+        {
+            isAttacking = true;
+            animator.SetTrigger("Walk");
+        }else if (distanceFromPlayer <= playerHitRange && canHitPlayer)
+        {
+            canHitPlayer = false;
+            
+            EventsManager.Instance.PlayerHit(transform);
+            
+            StartCoroutine(CanHitCooldown());
+        }
         
-        isAttacking = true;
-        animator.SetTrigger("Walk");
+
+    }
+
+    IEnumerator CanHitCooldown()
+    {
+        yield return new WaitForSeconds(playerHitCooldown);
+        canHitPlayer = true;
     }
 
     private void FixedUpdate()
@@ -85,16 +116,6 @@ public class Enemy : MonoBehaviour
         {
             rigidbody.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.fixedDeltaTime;
         }
-    }
-
-    public void Initialize(Transform targetTrans, EnemyManager manager)
-    {
-        isStandingUp = true;
-        isAttacking = false;
-        
-        target = targetTrans;
-        enemyManager = manager;
-        isDisabled = false;
     }
 
     public void Disable()

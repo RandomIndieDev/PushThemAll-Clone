@@ -27,6 +27,7 @@ public class EventsManager : MonoBehaviour
     public event Action OnSpawnTriggerEntered;
 
     public event Action OnPlayerDead;
+    public event Action<Transform> OnPlayerHit;
     public event Action<Transform> OnPlayerWon;
 
 
@@ -58,5 +59,10 @@ public class EventsManager : MonoBehaviour
     public void PlayerWon(Transform finishPosition)
     {
         OnPlayerWon?.Invoke(finishPosition);
+    }
+    
+    public void PlayerHit(Transform hitPosition)
+    {
+        OnPlayerHit?.Invoke(hitPosition);
     }
 }

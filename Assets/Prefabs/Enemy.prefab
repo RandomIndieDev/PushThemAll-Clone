@@ -83,6 +83,8 @@ MonoBehaviour:
   fallMultiplier: 8
   moveSpeed: 70
   attackRange: 15
+  playerHitRange: 1
+  playerHitCooldown: 2
 --- !u!114 &1585846633
 MonoBehaviour:
   m_ObjectHideFlags: 0

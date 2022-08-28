@@ -18,14 +18,18 @@ public class PlayerController : MonoBehaviour
 
     [Header("Settings")] 
     [SerializeField] private float moveSpeed;
+    [SerializeField] private float gotHitPower;
+    [SerializeField] private float gotHitCooldown;
     [SerializeField] private float fallMultiplier;
     [SerializeField] private Ease playerWeaponHitEase;
+    
 
 
     private bool allowMove;
     private bool allowWeaponHit;
     private bool playerIsDead;
     private bool isGrounded;
+    private bool isHit;
 
     private Vector3 originalPos;
     
@@ -34,6 +38,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         EventsManager.Instance.OnPlayerWon += PlayerLevelCompleted;
+        EventsManager.Instance.OnPlayerHit += PlayerGotHit;
         
         originalPos = weaponClone.transform.localPosition;
         allowWeaponHit = true;
@@ -44,6 +49,7 @@ public class PlayerController : MonoBehaviour
     void OnDisable()
     {
         EventsManager.Instance.OnPlayerWon -= PlayerLevelCompleted;
+        EventsManager.Instance.OnPlayerHit -= PlayerGotHit;
     }
 
 
@@ -132,6 +138,31 @@ public class PlayerController : MonoBehaviour
         player.transform.DORotate(finishLocation.rotation.eulerAngles, .5f);
         
         GameManager.Instance.RestartLevel();
+    }
+
+    private void PlayerGotHit(Transform hitPosition)
+    {
+        if (isHit) return;
+        StartCoroutine(DoPlayerHit(hitPosition));
+    }
+
+    IEnumerator DoPlayerHit(Transform hitPosition)
+    {
+        allowMove = false;
+        isHit = true;
+        rigidbody.velocity = Vector3.zero;
+        rigidbody.angularVelocity = Vector3.zero;
+
+        var direction = transform.position - hitPosition.position;
+        
+        animator.SetTrigger("Fall");
+        
+        rigidbody.AddForce(direction * gotHitPower, ForceMode.VelocityChange);
+        
+        yield return new WaitForSeconds(gotHitCooldown);
+
+        allowMove = true;
+        isHit = false;
     }
 
     IEnumerator MakePlayerFall()

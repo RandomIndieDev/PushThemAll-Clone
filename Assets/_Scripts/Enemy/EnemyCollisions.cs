@@ -21,7 +21,4 @@ public class EnemyCollisions : MonoBehaviour
             enemy.Disable();
         }
     }
-    
-    
-    
 }

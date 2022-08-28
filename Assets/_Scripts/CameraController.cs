@@ -35,6 +35,7 @@ public class CameraController : MonoBehaviour
     private void DetachCamera()
     {
         cam.Follow = null;
+        camZoom.Follow = null;
     }
 
     private void ZoomCameraOut()
