@@ -30,14 +30,14 @@ public class GameManager : MonoBehaviour
         EventsManager.Instance.OnPlayerDead -= RestartLevel;
     }
 
-    private void RestartLevel()
+    public void RestartLevel()
     {
         StartCoroutine(RestartLevelAfterDelay());
     }
 
     IEnumerator RestartLevelAfterDelay()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(5f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
     }
 

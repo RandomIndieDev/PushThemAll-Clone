@@ -9,6 +9,7 @@ TagManager:
   - PlayerWeapon
   - Floor
   - Enemy
+  - FinishLine
   layers:
   - Default
   - TransparentFX

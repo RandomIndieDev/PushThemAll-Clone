@@ -11,13 +11,14 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/ZoneTrigger.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Enemy/EnemyAnimationHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Player/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/CameraController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Enemy/EnemyManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Joystick Pack/Examples/JoystickPlayerExample.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/EventsManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/ZoneTrigger.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Enemy/EnemyAnimationHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/CameraController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Scripts/FinishTrigger.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/Enemy/EnemyCollisions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Scripts/ZoneBarrier.cs" root0="FORCE_HIGHLIGHTING" />
@@ -32,14 +33,15 @@
         <option value="$PROJECT_DIR$/Assets/_Scripts/EnemyPooler.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/ZoneTrigger.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/EnemyManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/_Scripts/EventsManager.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/Enemy/EnemyAnimationHandler.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/Enemy/Enemy.cs" />
-        <option value="$PROJECT_DIR$/Assets/_Scripts/GameManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/_Scripts/CameraController.cs" />
-        <option value="$PROJECT_DIR$/Assets/_Scripts/Enemy/EnemyManager.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/Enemy/EnemyCollisions.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/Player/PlayerWeapon.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Scripts/Enemy/EnemyManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Scripts/FinishTrigger.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Scripts/EventsManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Scripts/CameraController.cs" />
+        <option value="$PROJECT_DIR$/Assets/_Scripts/GameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/_Scripts/Player/PlayerController.cs" />
       </list>
     </option>
@@ -99,6 +101,9 @@
       <workItem from="1661679166209" duration="1990000" />
       <workItem from="1661681199323" duration="1984000" />
       <workItem from="1661683586071" duration="2171000" />
+      <workItem from="1661686332471" duration="2093000" />
+      <workItem from="1661688795474" duration="1935000" />
+      <workItem from="1661690770404" duration="359000" />
     </task>
     <servers />
   </component>

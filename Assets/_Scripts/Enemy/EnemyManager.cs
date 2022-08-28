@@ -19,41 +19,28 @@ public class EnemyManager : MonoBehaviour
 
     [Header("Zone Two Spawn Settings")] 
     [SerializeField] private Transform zoneTwoSpawnLoc;
-
     [SerializeField] private Vector2 xSpawnTwoPos;
     [SerializeField] private Vector2 zSpawnTwoPos;
-    
     [SerializeField] private int zoneTwoSpawnAmt;
     
     [Header("Zone Three Spawn Settings")] 
     [SerializeField] private Transform zoneThreeSpawnLoc;
-
     [SerializeField] private Vector2 xSpawnThreePos;
     [SerializeField] private Vector2 zSpawnThreePos;
-    
     [SerializeField] private int zoneThreeSpawnAmt;
     
-    
-
     
     [Header("Settings")]
     [SerializeField] private float ySpawnPosition;
     [SerializeField] private int spawnCollisionCheckRadius;
     [SerializeField] private LayerMask collisionMask;
-    
-
 
     private int currentSpawnCount;
-
-
     private int currentZone;
-    
-
 
     void Start()
     {
         currentZone = 1;
-        
         SpawnZoneEnemies();
     }
 

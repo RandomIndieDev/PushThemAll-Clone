@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Ease playerWeaponHitEase;
 
 
+    private bool allowMove;
     private bool allowWeaponHit;
     private bool playerIsDead;
     private bool isGrounded;
@@ -32,14 +33,24 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        EventsManager.Instance.OnPlayerWon += PlayerLevelCompleted;
+        
         originalPos = weaponClone.transform.localPosition;
         allowWeaponHit = true;
         isGrounded = true;
+        allowMove = true;
+    }
+
+    void OnDisable()
+    {
+        EventsManager.Instance.OnPlayerWon -= PlayerLevelCompleted;
     }
 
 
     private void Update()
     {
+        if (!allowMove) return;
+        
         if (Input.GetMouseButtonUp(0) && allowWeaponHit)
         {
             allowWeaponHit = false;
@@ -58,6 +69,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!allowMove) return;
         
         FallFaster();
         
@@ -99,13 +111,27 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Floor") && isGrounded)
         {
             isGrounded = false;
             StartCoroutine(MakePlayerFall());
         }
+    }
+
+    private void PlayerLevelCompleted(Transform finishLocation)
+    {
+        allowMove = false;
+        
+        animator.SetTrigger("Dance");
+        
+        heldWeapon.SetActive(false);
+        weaponClone.SetActive(false);
+        player.transform.DOMove(finishLocation.position, .5f);
+        player.transform.DORotate(finishLocation.rotation.eulerAngles, .5f);
+        
+        GameManager.Instance.RestartLevel();
     }
 
     IEnumerator MakePlayerFall()
