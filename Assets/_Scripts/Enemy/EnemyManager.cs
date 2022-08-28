@@ -110,12 +110,12 @@ public class EnemyManager : MonoBehaviour
             case 2:
                 
                 PrepEnemy(SpawnEnemiesInZone(zoneTwoSpawnLoc.position, xSpawnTwoPos, zSpawnTwoPos));
-                
+                print("Called 2");
                 break;
             case 3:
                 
                 PrepEnemy(SpawnEnemiesInZone(zoneThreeSpawnLoc.position, xSpawnThreePos, zSpawnThreePos));
-                
+                print("Called 3");
                 break;
             
         }
@@ -136,6 +136,9 @@ public class EnemyManager : MonoBehaviour
             if (Physics.CheckSphere(spawnLocation, spawnCollisionCheckRadius, collisionMask)) continue;
             
             var spawnedEnemy = enemyPooler.SpawnFromPool(spawnLocation, Quaternion.identity);
+            
+            
+            
             spawnedEnemies.Add(spawnedEnemy);
 
 

@@ -122,8 +122,19 @@ public class Enemy : MonoBehaviour
     {
         if (isDisabled) return;
         
-        enemyManager.EnemyDisabled();
         isDisabled = true;
+        rigidbody.velocity = Vector3.zero;
+        rigidbody.angularVelocity = Vector3.zero;
+        enemyManager.EnemyDisabled();
+
+        StartCoroutine(DeactivateGO());
+
+    }
+
+    IEnumerator DeactivateGO()
+    {
+        yield return new WaitForSeconds(3f);
+        gameObject.SetActive(false);
     }
     
 
